@@ -1,114 +1,188 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>AWE Marker AR demo</title>
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-<meta charset="utf-8"/>
-<style type="text/css">
-* {
-	margin: 0;
-	padding: 0;
-}
-#container {
-	position: absolute;
-	left: 0;
-	top: 0;
-	bottom: 0;
-	right: 0;
-	overflow: hidden;
-}
-</style>
-</head>
-<body>
-<div id="container"></div>
-<script type="text/javascript" src="lib/awe-loader-min.js"></script>
-<script type="text/javascript">
-  window.addEventListener('load', function() {
-    window.awe.init({
-      device_type: awe.AUTO_DETECT_DEVICE_TYPE,
-      settings: {
-      	container_id: 'container',
-        default_camera_position: { x:0, y:0, z:0 },
-        default_lights:[
-          {
-            id: 'point_light',
-            type: 'point',
-            color: 0xFFFFFF,
-          },
-        ],
-      },
-      ready: function() {
-        awe.util.require([
-          {
-            capabilities: ['gum','webgl'],
-            files: [ 
-              [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js'],
-              'js/awe-jsartoolkit-dependencies.js',
-              'js/awe.marker_ar.js',
-            ],
-            success: function() {
-							awe.setup_scene();
-			        awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:10000 }, visible: false });
-              console.log("!!! awe.projections.add");
-			        awe.projections.add({
-			          id:'projection_1',
-                geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
-                scale: {x:100, y:100, z:100},
-			          material:{ type: 'phong', color: 0xFFFFFF }, 
-                texture: { path: 'awe_by_buildAR.png' },
-			        }, { poi_id: 'poi_1' });
-			        awe.events.add([{
-								id: 'ar_tracking_marker',
-								device_types: {
-									pc: 1,
-									android: 1
-								},
-								register: function(handler) {
-									window.addEventListener('ar_tracking_marker', handler, false);
-								},
-								unregister: function(handler) {
-									window.removeEventListener('ar_tracking_marker', handler, false);
-								},
-								handler: function(event) {
-									if (event.detail) {
-										if (event.detail['64']) { // we are mapping marker #64 to this projection
-											awe.pois.update({
-												data: {
-													visible: true,
-                          position: { x:0, y:0, z:0 },
-													matrix: event.detail['64'].transform
-												},
-												where: {
-													id: 'poi_1'
-												}
-											});
-										}
-										else {
-											awe.pois.update({
-												data: {
-													visible: false
-												},
-												where: {
-													id: 'poi_1'
-												}
-											});
-										}
-										awe.scene_needs_rendering = 1;
-									}
-								}
-							}])
-			      },
-          },
-          {
-            capabilities: [],
-            success: function() { 
-		          document.body.innerHTML = '<p>Try this demo in the latest version of Chrome or Firefox on a PC or Android device</p>';
-            },
-          },
-        ]);
+  <head>
+    <title>For Cara</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta charset="utf-8"/>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
       }
-    });
-  });
-</script>
-</body>
+      #container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        /*display: none;*/
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/classie.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript" src="lib/awe-loader.js"></script>
+    <script type="text/javascript">
+      var container = document.getElementById("container");
+      container.hidden = true;
+      window.addEventListener('load', function() {
+        window.awe.init({
+          device_type: awe.AUTO_DETECT_DEVICE_TYPE,
+          settings: {
+            container_id: 'container',
+            default_camera_position: { x:0, y:0, z:0 },
+            default_lights:[
+              {
+                id: 'point_light',
+                type: 'point',
+                color: 0xFFFFFF,
+              },
+            ],
+          },
+          ready: function() {
+            awe.util.require([
+              {
+                capabilities: ['gum','webgl'],
+                files: [ 
+                  [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js'],
+                  'js/awe-jsartoolkit-dependencies.js',
+                  'js/awe.marker_ar.js',
+                ],
+                success: function() {
+                  awe.setup_scene();
+                  awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:10000 }, visible: false });
+                  console.log("!!! awe.projections.add");
+                  awe.projections.add({
+                    id:'projection_1',
+                    geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
+                    scale: {x:100, y:100, z:100},
+                    material:{ type: 'phong', color: 0xFFFFFF }, 
+                    texture: { path: 'awe_by_buildAR.png' },
+                  }, { poi_id: 'poi_1' });
+                  awe.events.add([{
+                    id: 'ar_tracking_marker',
+                    device_types: {
+                      pc: 1,
+                      android: 1
+                    },
+                    register: function(handler) {
+                      window.addEventListener('ar_tracking_marker', handler, false);
+                    },
+                    unregister: function(handler) {
+                      window.removeEventListener('ar_tracking_marker', handler, false);
+                    },
+                    handler: function(event) {
+                      if (event.detail) {
+                        if (event.detail['64']) { // we are mapping marker #64 to this projection
+                          if(container.hidden) container.hidden = false;
+                          // console.log("!!! ar_tracking_marker", event);
+                          awe.pois.update({
+                            data: {
+                              visible: true,
+                              position: { x:0, y:0, z:0 },
+                              matrix: event.detail['64'].transform
+                            },
+                            where: {
+                              id: 'poi_1'
+                            }
+                          });
+                        }
+                        else {
+                          if(!container.hidden) container.hidden = true;
+                          awe.pois.update({
+                            data: {
+                              visible: false
+                            },
+                            where: {
+                              id: 'poi_1'
+                            }
+                          });
+                        }
+                        awe.scene_needs_rendering = 1;
+                      }
+                    }
+                  }])
+                },
+              },
+              {
+                capabilities: [],
+                success: function() { 
+                  document.body.innerHTML = '<p>Try this demo in the latest version of Chrome or Firefox on a PC or Android device</p>';
+                },
+              },
+            ]);
+          }
+        });
+      });
+    </script>
+    <section>
+      <form id="theForm" class="simform" autocomplete="off">
+        <div class="simform-inner">
+          <ol class="questions">
+            <li>
+              <span><label for="q1">What's your favorite movie?</label></span>
+              <input id="q1" name="q1" type="text"/>
+            </li>
+            <li>
+              <span><label for="q2">Where do you live?</label></span>
+              <input id="q2" name="q2" type="text"/>
+            </li>
+            <li>
+              <span><label for="q3">What time do you got to work?</label></span>
+              <input id="q3" name="q3" type="text"/>
+            </li>
+            <li>
+              <span><label for="q4">How do you like your veggies?</label></span>
+              <input id="q4" name="q4" type="text"/>
+            </li>
+            <li>
+              <span><label for="q5">What book inspires you?</label></span>
+              <input id="q5" name="q5" type="text"/>
+            </li>
+            <li>
+              <span><label for="q6">What's your profession?</label></span>
+              <input id="q6" name="q6" type="text"/>
+            </li>
+          </ol><!-- /questions -->
+          <button class="submit" type="submit">Send answers</button>
+          <div class="controls">
+            <button class="next"></button>
+            <div class="progress"></div>
+            <span class="number">
+              <span class="number-current"></span>
+              <span class="number-total"></span>
+            </span>
+            <span class="error-message"></span>
+          </div><!-- / controls -->
+        </div><!-- /simform-inner -->
+        <span class="final-message"></span>
+      </form><!-- /simform -->
+    </section>
+    <script src="js/stepsForm.js"></script>
+    <script>
+      var theForm = document.getElementById( 'theForm' );
+
+      new stepsForm( theForm, {
+        onSubmit : function( form ) {
+          // hide form
+          classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+          /*
+          form.submit()
+          or
+          AJAX request (maybe show loading indicator while we don't have an answer..)
+          */
+
+          // let's just simulate something...
+          var messageEl = theForm.querySelector( '.final-message' );
+          messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
+          classie.addClass( messageEl, 'show' );
+        }
+      } );
+    </script>
+  </body>
 </html>

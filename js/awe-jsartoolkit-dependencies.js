@@ -2022,7 +2022,7 @@ NyARIntPointStack = Klass( NyARObjectStack,
 
 
 
-//	import jp.nyatla.nyartoolkit.as3.core.types.*;
+//  import jp.nyatla.nyartoolkit.as3.core.types.*;
 
 NyARIntRectStack = Klass( //NyARObjectStack,
 {
@@ -2298,7 +2298,7 @@ NyARDoublePoint2d = Klass(
       return;
       break;
     case 2:
-      {	//public function NyARDoublePoint2d(i_x,i_y)
+      {  //public function NyARDoublePoint2d(i_x,i_y)
         this.x = Number(args[0]);
         this.y = Number(args[1]);
         return;
@@ -2547,9 +2547,9 @@ NyARIntSize = Klass(
 {
   h : 0,
   w : 0,
-  /*	public function NyARIntSize()
-    * 	public function NyARIntSize(i_width,i_height)
-    *	public function NyARIntSize(i_ref_object)
+  /*  public function NyARIntSize()
+    *   public function NyARIntSize(i_width,i_height)
+    *  public function NyARIntSize(i_ref_object)
   */
   initialize : function()
   {
@@ -2566,7 +2566,7 @@ NyARIntSize = Klass(
       return;
       break;
     case 2:
-      {	//public function NyARIntSize(i_ref_object)
+      {  //public function NyARIntSize(i_ref_object)
         this.w=toInt(arguments[0]);
         this.h=toInt(arguments[1]);
         return;
