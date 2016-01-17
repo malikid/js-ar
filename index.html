@@ -51,7 +51,8 @@
 			        awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:10000 }, visible: false });
 			        awe.projections.add({ 
 			          id:'projection_1', 
-								geometry: { shape: 'cube', x:120, y:120, z:120 },
+								// geometry: { shape: 'cube', x:120, y:120, z:120 },
+                geometry: {path: "model/corgi.stl"},
 			          material:{ type: 'phong', color: 0xFFFFFF }, 
                 texture: { path: 'awe_by_buildAR.png' },
 			        }, { poi_id: 'poi_1' });
