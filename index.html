@@ -46,13 +46,14 @@
               'js/awe-jsartoolkit-dependencies.js',
               'js/awe.marker_ar.js',
             ],
-            success: function() { 
-							awe.setup_scene();			
+            success: function() {
+							awe.setup_scene();
 			        awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:10000 }, visible: false });
-			        awe.projections.add({ 
-			          id:'projection_1', 
-								// geometry: { shape: 'cube', x:120, y:120, z:120 },
-                geometry: {path: "model/corgi.stl"},
+              console.log("!!! awe.projections.add");
+			        awe.projections.add({
+			          id:'projection_1',
+                geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
+                scale: {x:100, y:100, z:100},
 			          material:{ type: 'phong', color: 0xFFFFFF }, 
                 texture: { path: 'awe_by_buildAR.png' },
 			        }, { poi_id: 'poi_1' });
