@@ -4,10 +4,15 @@
     <title>For Cara</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
     <style type="text/css">
       * {
         margin: 0;
         padding: 0;
+      }
+      body {
+        width: 75%;
+        margin: 0 auto;
       }
       #container {
         position: absolute;
@@ -18,8 +23,15 @@
         overflow: hidden;
         /*display: none;*/
       }
+      .questions input {
+        padding: 0 0 0 15px;
+        margin-top: 20px;
+      }
+      .next::after{
+        top: 50px;
+      }
     </style>
-    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    
     <script src="js/modernizr.custom.js"></script>
     <script src="js/classie.js"></script>
   </head>
@@ -120,31 +132,71 @@
       });
     </script>
     <section>
-      <form id="theForm" class="simform" autocomplete="off">
-        <div class="simform-inner">
+	<form id="theForm" class="simform" autocomplete="off">
+		<div class="simform-inner">
           <ol class="questions">
             <li>
-              <span><label for="q1">What's your favorite movie?</label></span>
+              <span>
+                <label for="q0">
+                  <p>哈囉～～～嘛嘛</p>
+                  Q.你知道我是誰嗎？
+                </label>
+              </span>
+              <input id="q0" name="q0" type="text"/>
+            </li>
+            <li>
+              <span>
+              	<label for="q1">
+                  <p>早餐吃什麼好呢</p>
+                  Q.好吃的秘密是什麼？
+              	</label>
+              </span>
               <input id="q1" name="q1" type="text"/>
             </li>
             <li>
-              <span><label for="q2">Where do you live?</label></span>
+              <span>
+                <label for="q2">
+                  <p>覺得痠痠der</p>
+                  <p>導航地圖</p>
+                  Q.要去哪裡好呢？
+                </label>
+              </span>
               <input id="q2" name="q2" type="text"/>
             </li>
             <li>
-              <span><label for="q3">What time do you got to work?</label></span>
+              <span>
+                <label for="q3">
+                  <p>百貨公司：給 CSS (提示：文字敘述) 到某個點找帽子， (FB 打卡，我們啟動到下一關)</p>
+                  Q.咦是什麼？拍照 po Facebook
+                </label>
+              </span>
               <input id="q3" name="q3" type="text"/>
             </li>
             <li>
-              <span><label for="q4">How do you like your veggies?</label></span>
+              <span>
+                <label for="q4">
+                  <p>恩～ 嘴巴癢癢的好想應該來吃點什麼</p>
+                  Q.哎呀！這是什麼不尋常的行為啊？
+                </label>
+              </span>
               <input id="q4" name="q4" type="text"/>
             </li>
             <li>
-              <span><label for="q5">What book inspires you?</label></span>
+              <span>
+                <label for="q5">
+                  <p>好想睡覺覺喔......</p>
+                  Q5.讓小啦速燙睡在「船」上，用螢幕截圖，po Facebook
+                </label>
+              </span>
               <input id="q5" name="q5" type="text"/>
             </li>
             <li>
-              <span><label for="q6">What's your profession?</label></span>
+              <span>
+                <label for="q6">
+                  <p>終於～～嘻嘻</p>
+                  Q.知道我們在哪裡嗎？
+                </label>
+              </span>
               <input id="q6" name="q6" type="text"/>
             </li>
           </ol><!-- /questions -->
@@ -179,7 +231,7 @@
 
           // let's just simulate something...
           var messageEl = theForm.querySelector( '.final-message' );
-          messageEl.innerHTML = 'Thank you! We\'ll be in touch.';
+          messageEl.innerHTML = '恭喜！快點來找我們吧！';
           classie.addClass( messageEl, 'show' );
         }
       } );

@@ -115,7 +115,7 @@
   };
 
   stepsForm.prototype._nextQuestion = function() {
-    if( !this._validade() ) {
+    if( !this._validate() ) {
       return false;
     }
 
@@ -198,14 +198,54 @@
 
   // TODO (next version..)
   // the validation function
-  stepsForm.prototype._validade = function() {
+  stepsForm.prototype._validate = function() {
     // current question´s input
-    var input = this.questions[ this.current ].querySelector( 'input' ).value;
-    if( input === '' ) {
-      this._showError( 'EMPTYSTR' );
-      return false;
+    var input = this.questions[ this.current ].querySelector('input').value;
+    // var currentQ = this.current + 1;
+    switch(this.current){
+      case 1:
+        if( input !== '酒' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
+      case 2:
+        if( input !== '馬殺雞' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
+      case 3:
+        if( input !== '帽子' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
+      case 4:
+        if( input !== '咬腳腳' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
+      case 5:
+        if( input !== '船' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
+      case 6:
+        if( input !== '金鑛咖啡' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
+      default:
+        if( input !== '啦速燙' ) {
+          this._showError( 'iserror' );
+          return false;
+        }
+      break;
     }
-
     return true;
   }
 
@@ -213,10 +253,10 @@
   stepsForm.prototype._showError = function( err ) {
     var message = '';
     switch( err ) {
-      case 'EMPTYSTR' : 
-        message = 'Please fill the field before continuing';
+      case 'iserror' :
+        message = '答錯啦~ 再想想';
         break;
-      case 'INVALIDEMAIL' : 
+      case 'INVALIDEMAIL' :
         message = 'Please fill a valid email address';
         break;
       // ...
