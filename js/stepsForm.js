@@ -201,8 +201,8 @@
   stepsForm.prototype._validate = function() {
     // current question´s input
     var input = this.questions[ this.current ].querySelector('input').value;
-    // var currentQ = this.current + 1;
-    switch(this.current){
+    var currentQ = this.current + 1;
+    switch(currentQ){
       case 1:
         if( input !== '酒' ) {
           this._showError( 'iserror' );

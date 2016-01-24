@@ -1,7 +1,7 @@
 (function(awe) {
   var threshold = 98;
-  var width = 640;
-  var height = 480;
+  var width = window.innerWidth;
+  var height = window.innerHeight;
   var video = document.createElement('video');
   var last_time = 0;
   var tracking_enabled = false, background_video, canvas, ctx, video_stream, detector, raster, param, resultMat, tmp = new Float32Array(16), pov_projection_matrix, pov_projection_matrix2;
@@ -101,13 +101,17 @@
       handler: function(e) {
         canvas = document.createElement('canvas');
         canvas.id = "ar_canvas";
-        canvas.width = width/2;
+        canvas.width = width;
         canvas.height = height/2;
-        canvas.style.display = "none";
+        canvas.style.position = 'absolute';
+        canvas.style.left = '0px';
+        canvas.style.bottom = '0px';
+        canvas.style.zIndex = '-1';
+        canvas.style.display = "block";
         document.body.appendChild(canvas);
         ctx = canvas.getContext('2d');
         raster = new NyARRgbRaster_Canvas2D(canvas);
-        param = new FLARParam(width/2,height/2);
+        param = new FLARParam(width,height/2);
         resultMat = new NyARTransMatResult();
         detector = new FLARMultiIdMarkerDetector(param,120);
         detector.setContinueMode(true);
@@ -162,7 +166,7 @@
         if (video.currentTime == last_time) { return; }
         last_time = video.currentTime;
         try {
-          ctx.drawImage(video, 0, 0, width/2, height/2);
+          ctx.drawImage(video, 0, 0, width, height/2);
         } catch(e) { /* TODO */ }
         canvas.changed = true;
         var detected_count = detector.detectMarkerLite(raster, threshold);

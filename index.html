@@ -21,17 +21,30 @@
         bottom: 0;
         right: 0;
         overflow: hidden;
+        margin-top: 50%;
         /*display: none;*/
       }
       .questions input {
-        padding: 0 0 0 15px;
         margin-top: 20px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        background-color: #e2e2e2;
       }
       .next::after{
         top: 50px;
       }
+
+      /*.box {
+        width: 100%;
+        height: auto;
+        background-color: #CA45FF;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+      }*/
     </style>
-    
+
     <script src="js/modernizr.custom.js"></script>
     <script src="js/classie.js"></script>
   </head>
@@ -136,22 +149,15 @@
 		<div class="simform-inner">
           <ol class="questions">
             <li>
-              <span>
-                <label for="q0">
-                  <p>哈囉～～～嘛嘛</p>
-                  Q.你知道我是誰嗎？
-                </label>
-              </span>
-              <input id="q0" name="q0" type="text"/>
-            </li>
-            <li>
-              <span>
+              <!-- <div class="box"> -->
+              <div>
               	<label for="q1">
                   <p>早餐吃什麼好呢</p>
                   Q.好吃的秘密是什麼？
               	</label>
-              </span>
+              </div>
               <input id="q1" name="q1" type="text"/>
+              <!-- </div> -->
             </li>
             <li>
               <span>
