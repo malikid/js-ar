@@ -47,7 +47,7 @@
             awe.util.require([
               {
                 capabilities: ['gum','webgl'],
-                files: [ 
+                files: [
                   [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js'],
                   'js/awe-jsartoolkit-dependencies.js',
                   'js/awe.marker_ar.js',
@@ -60,7 +60,7 @@
                     id:'projection_1',
                     geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
                     scale: {x:100, y:100, z:100},
-                    material:{ type: 'phong', color: 0xFFFFFF }, 
+                    material:{ type: 'phong', color: 0xFFFFFF },
                     texture: { path: 'awe_by_buildAR.png' },
                   }, { poi_id: 'poi_1' });
                   awe.events.add([{
@@ -110,7 +110,7 @@
               },
               {
                 capabilities: [],
-                success: function() { 
+                success: function() {
                   document.body.innerHTML = '<p>Try this demo in the latest version of Chrome or Firefox on a PC or Android device</p>';
                 },
               },
