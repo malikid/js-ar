@@ -1,0 +1,113 @@
+      * {
+        margin: 0;
+        padding: 0;
+        color: #ffffff;
+        font-size: 24px;
+      }
+      body {
+        width: 90%;
+        margin: 0 auto;
+      }
+      #container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        overflow: hidden;
+        margin-top: 50%;
+        /*display: none;*/
+      }
+
+      .simform {
+        padding-top: 10%;
+        background-color: #FFD96C;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+      }
+      .simform ol:before {
+        height: 0;
+      }
+      .questions input {
+        margin: 20px 0 20px 20px;
+        width: 65%;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        background-color: #ffffff;
+      }
+      .next::after{
+        top: 50px;
+      }
+
+      .questions li > span {
+        padding: 10px;
+        line-height: 1.4;
+      }
+
+      .q1-qbg {
+        background-color: #FFAA00;
+      }
+
+      .q2-qbg {
+        background-color: #00C737;
+      }
+
+      .q3-qbg {
+        background-color: #0051FF;
+      }
+
+      .q4-qbg {
+        background-color: #E8006B;
+      }
+
+      .q5-qbg {
+        background-color: #FF8800;
+      }
+
+      .q6-qbg {
+        background-color: #303F9F;
+      }
+      #theForm {
+        position: relative;
+        top: 50px
+      }
+      .title {
+        position: absolute;
+        top: -40px;
+      }
+      .title div {
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #000000;
+        display: inline-block;
+        margin-right: 5px;
+        font-size: 14px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+      }
+      .dog {
+        position: absolute;
+        top: -50px;
+        right: 0;
+        width: 130px;
+        z-index: 999;
+      }
+      .dog img {
+        width: 100%;
+      }
+
+      .simform .number {
+          position: absolute;
+          top: 55%;
+          right: 10px;
+          overflow: hidden;
+          /*margin: 0.4em 0;*/
+          /*width: 45px;*/
+          font-weight: 700;
+          font-size: 0.5em;
+      }
