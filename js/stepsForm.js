@@ -11,7 +11,10 @@
 ;( function( window ) {
   
   'use strict';
-
+  var dog = document.getElementById('dog');
+  var img = '';
+  var simformBg = document.getElementById('theForm');
+  var nextBg = ['#FFD96C','#7EE88B','#5282FF','#E83F88','#FFC445','#3F51B5'];
   var transEndEventNames = {
       'WebkitTransition': 'webkitTransitionEnd',
       'MozTransition': 'transitionend',
@@ -246,6 +249,12 @@
         }
       break;
     }
+
+    //
+    img = currentQ + 1;
+    dog.src = 'images/main0' + img + '.png';
+    simformBg.style.backgroundColor = nextBg[currentQ];
+
     return true;
   }
 

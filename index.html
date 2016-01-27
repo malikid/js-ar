@@ -1,50 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>For Cara</title>
+    <title>For Cara1</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <style type="text/css">
-      * {
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        width: 75%;
-        margin: 0 auto;
-      }
-      #container {
-        position: absolute;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        overflow: hidden;
-        margin-top: 50%;
-        /*display: none;*/
-      }
-      .questions input {
-        margin-top: 20px;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        background-color: #e2e2e2;
-      }
-      .next::after{
-        top: 50px;
-      }
-
-      /*.box {
-        width: 100%;
-        height: auto;
-        background-color: #CA45FF;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-      }*/
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/modernizr.custom.js"></script>
     <script src="js/classie.js"></script>
   </head>
@@ -83,10 +44,10 @@
                   console.log("!!! awe.projections.add");
                   awe.projections.add({
                     id:'projection_1',
-                    geometry: {path: "model/aaqq.obj", x:-10, y:-10, z:1},
-                    scale: {x:450, y:450, z:450},
+                    geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
+                    scale: {x:100, y:100, z:100},
                     material:{ type: 'phong', color: 0xFFFFFF },
-                    texture: { path: 'dress.jpg' },
+                    texture: { path: 'awe_by_buildAR.png' },
                   }, { poi_id: 'poi_1' });
                   awe.events.add([{
                     id: 'ar_tracking_marker',
@@ -145,32 +106,40 @@
       });
     </script>
     <section>
-	<form id="theForm" class="simform" autocomplete="off">
-		<div class="simform-inner">
+  <form id="theForm" class="simform" autocomplete="off">
+    <div class="title">
+      <div>啦</div>
+      <div>速</div>
+      <div>燙</div>
+      <div>的</div>
+      <div>一</div>
+      <div>天</div>
+    </div>
+    <div class="dog">
+      <img id="dog" src="images/main01.png" alt="">
+    </div>
+    <div class="simform-inner">
           <ol class="questions">
             <li>
-              <!-- <div class="box"> -->
-              <div>
-              	<label for="q1">
+              <span class="q1-qbg">
+                <label for="q1">
                   <p>早餐吃什麼好呢</p>
                   Q.好吃的秘密是什麼？
-              	</label>
-              </div>
+                </label>
+              </span>
               <input id="q1" name="q1" type="text"/>
-              <!-- </div> -->
             </li>
             <li>
-              <span>
+              <span class="q2-qbg">
                 <label for="q2">
                   <p>覺得痠痠der</p>
-                  <p>導航地圖</p>
                   Q.要去哪裡好呢？
                 </label>
               </span>
               <input id="q2" name="q2" type="text"/>
             </li>
             <li>
-              <span>
+              <span class="q3-qbg">
                 <label for="q3">
                   <p>百貨公司：給 CSS (提示：文字敘述) 到某個點找帽子， (FB 打卡，我們啟動到下一關)</p>
                   Q.咦是什麼？拍照 po Facebook
@@ -179,7 +148,7 @@
               <input id="q3" name="q3" type="text"/>
             </li>
             <li>
-              <span>
+              <span class="q4-qbg">
                 <label for="q4">
                   <p>恩～ 嘴巴癢癢的好想應該來吃點什麼</p>
                   Q.哎呀！這是什麼不尋常的行為啊？
@@ -188,7 +157,7 @@
               <input id="q4" name="q4" type="text"/>
             </li>
             <li>
-              <span>
+              <span class="q5-qbg">
                 <label for="q5">
                   <p>好想睡覺覺喔......</p>
                   Q5.讓小啦速燙睡在「船」上，用螢幕截圖，po Facebook
@@ -197,7 +166,7 @@
               <input id="q5" name="q5" type="text"/>
             </li>
             <li>
-              <span>
+              <span class="q6-qbg">
                 <label for="q6">
                   <p>終於～～嘻嘻</p>
                   Q.知道我們在哪裡嗎？
@@ -222,6 +191,7 @@
     </section>
     <script src="js/stepsForm.js"></script>
     <script>
+
       var theForm = document.getElementById( 'theForm' );
 
       new stepsForm( theForm, {
@@ -237,7 +207,7 @@
 
           // let's just simulate something...
           var messageEl = theForm.querySelector( '.final-message' );
-          messageEl.innerHTML = '恭喜！快點來找我們吧！';
+          messageEl.innerHTML = '恭喜！快ssss點來找我們吧！';
           classie.addClass( messageEl, 'show' );
         }
       } );
