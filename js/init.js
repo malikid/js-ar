@@ -25,15 +25,15 @@ window.addEventListener('load', function() {
           ],
           success: function() {
             awe.setup_scene();
-            awe.pois.add({ id:'poi_1', position: { x:-10, y:-80, z:-50 }, visible: false });
+            awe.pois.add({ id:'poi_1', position: { x:-60, y:20, z:140 }, visible: false });
             console.log("!!! awe.projections.add");
             awe.projections.add({
               id:'projection_1',
-              geometry: {path: "model/test02.obj", x:-10, y:-80, z:-50 },
-              scale: {x:30, y:30, z:30},
-              position: { x:-10, y:-80, z:-50 }, // the y is vertical
+              geometry: {path: "../model/OKK.obj", x:-60, y:20, z:140 },
+              scale: {x:50, y:50, z:50},
+              position: { x:-60, y:20, z:140 }, // the y is vertical
               material:{ type: 'phong', color: 0xFFFFFF },
-              texture: { path: 'awe_by_buildAR.png' },
+              texture: { path: '../skin.jpg' },
             }, { poi_id: 'poi_1' });
             awe.events.add([{
               id: 'ar_tracking_marker',
@@ -55,7 +55,7 @@ window.addEventListener('load', function() {
                     awe.pois.update({
                       data: {
                         visible: true,
-                        position: { x:-10, y:-80, z:-50 },
+                        position: { x:-60, y:20, z:140 },
                         matrix: event.detail['64'].transform
                       },
                       where: {
