@@ -8,6 +8,7 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
+ // TODO temp
 ;( function( window ) {
   
   'use strict';
@@ -117,8 +118,8 @@
     } );
   };
 
-  stepsForm.prototype._nextQuestion = function() {
-    if( !this._validate() ) {
+  stepsForm.prototype._nextQuestion = function(force) {
+    if(!force && !this._validate() ) {
       return false;
     }
 
@@ -203,6 +204,7 @@
   // the validation function
   stepsForm.prototype._validate = function() {
     // current question´s input
+    var that = this;
     var input = this.questions[ this.current ].querySelector('input').value;
     var currentQ = this.current + 1;
     switch(currentQ){
@@ -219,32 +221,43 @@
         }
       break;
       case 3:
-        if( input !== '帽子' ) {
-          this._showError( 'iserror' );
-          return false;
-        }
-      break;
+        getHatStepData()
+        .done(function(data) {
+          if(data.results[0].hasCheckedIn) {
+            console.log("PASS!");
+            that._nextQuestion(true);
+          } else {
+            console.log("NOT PASS!");
+            that._showError( 'noCheckInYet' );
+          }
+        })
+        .fail(function(error) {
+          console.error("error");
+        })
+
+        this._showError('waiting');
+        return false;
       case 4:
-        if( input !== '咬腳腳' ) {
-          this._showError( 'iserror' );
+        if(input !== '咬腳腳') {
+          this._showError('iserror');
           return false;
         }
       break;
       case 5:
-        if( input !== '船' ) {
-          this._showError( 'iserror' );
+        if(input !== '船') {
+          this._showError('iserror');
           return false;
         }
       break;
       case 6:
-        if( input !== '金鑛咖啡' ) {
-          this._showError( 'iserror' );
+        if(input !== '金鑛咖啡') {
+          this._showError('iserror');
           return false;
         }
       break;
       default:
-        if( input !== '啦速燙' ) {
-          this._showError( 'iserror' );
+        if(input !== '啦速燙') {
+          this._showError('iserror');
           return false;
         }
       break;
@@ -264,6 +277,12 @@
     switch( err ) {
       case 'iserror' :
         message = '答錯啦~ 再想想';
+        break;
+      case "noCheckInYet":
+        message = "還沒上 Facebook 打卡喔！";
+        break;
+      case "waiting":
+        message = "Checking... Please wait...";
         break;
       case 'INVALIDEMAIL' :
         message = 'Please fill a valid email address';

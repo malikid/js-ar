@@ -1,109 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>For Cara</title>
+    <title>For Cara2</title>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta charset="utf-8"/>
     <link rel="stylesheet" type="text/css" href="css/component.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/modernizr.custom.js"></script>
     <script src="js/classie.js"></script>
+    <script src="js/jquery-2.2.0.min.js"></script>
+    <script src="js/cara.js"></script>
   </head>
   <body>
     <div id="container"></div>
     <script type="text/javascript" src="lib/awe-loader.js"></script>
-    <script type="text/javascript">
-      var container = document.getElementById("container");
-      container.hidden = true;
-      window.addEventListener('load', function() {
-        window.awe.init({
-          device_type: awe.AUTO_DETECT_DEVICE_TYPE,
-          settings: {
-            container_id: 'container',
-            default_camera_position: { x:0, y:0, z:0 },
-            default_lights:[
-              {
-                id: 'point_light',
-                type: 'point',
-                color: 0xFFFFFF,
-              },
-            ],
-          },
-          ready: function() {
-            awe.util.require([
-              {
-                capabilities: ['gum','webgl'],
-                files: [
-                  [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js'],
-                  'js/awe-jsartoolkit-dependencies.js',
-                  'js/awe.marker_ar.js',
-                ],
-                success: function() {
-                  awe.setup_scene();
-                  awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:10000 }, visible: false });
-                  console.log("!!! awe.projections.add");
-                  awe.projections.add({
-                    id:'projection_1',
-                    geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
-                    scale: {x:100, y:100, z:100},
-                    material:{ type: 'phong', color: 0xFFFFFF },
-                    texture: { path: 'awe_by_buildAR.png' },
-                  }, { poi_id: 'poi_1' });
-                  awe.events.add([{
-                    id: 'ar_tracking_marker',
-                    device_types: {
-                      pc: 1,
-                      android: 1
-                    },
-                    register: function(handler) {
-                      window.addEventListener('ar_tracking_marker', handler, false);
-                    },
-                    unregister: function(handler) {
-                      window.removeEventListener('ar_tracking_marker', handler, false);
-                    },
-                    handler: function(event) {
-                      if (event.detail) {
-                        if (event.detail['64']) { // we are mapping marker #64 to this projection
-                          if(container.hidden) container.hidden = false;
-                          // console.log("!!! ar_tracking_marker", event);
-                          awe.pois.update({
-                            data: {
-                              visible: true,
-                              position: { x:0, y:0, z:0 },
-                              matrix: event.detail['64'].transform
-                            },
-                            where: {
-                              id: 'poi_1'
-                            }
-                          });
-                        }
-                        else {
-                          if(!container.hidden) container.hidden = true;
-                          awe.pois.update({
-                            data: {
-                              visible: false
-                            },
-                            where: {
-                              id: 'poi_1'
-                            }
-                          });
-                        }
-                        awe.scene_needs_rendering = 1;
-                      }
-                    }
-                  }])
-                },
-              },
-              {
-                capabilities: [],
-                success: function() {
-                  document.body.innerHTML = '<p>Try this demo in the latest version of Chrome or Firefox on a PC or Android device</p>';
-                },
-              },
-            ]);
-          }
-        });
-      });
+    <script type="text/javascript" src="js/init.js">
     </script>
     <section>
   <form id="theForm" class="simform" autocomplete="off">
