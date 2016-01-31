@@ -99,6 +99,22 @@
         <span class="final-message"></span>
       </form><!-- /simform -->
     </section>
+
+    <div class="tip-wrap">
+      <div class="tip-cover">
+        <div class="btn tip-icon"></div>
+
+      </div>
+      <div class="tip-content">
+        <div class="map-wrap">
+          <div id="map"></div>
+        </div>
+        <div class="css-wrap">
+          <div class="css">
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="js/stepsForm.js"></script>
     <script>
 
@@ -121,6 +137,10 @@
           classie.addClass( messageEl, 'show' );
         }
       } );
+    </script>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script async defer
+         src="https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap">
     </script>
   </body>
 </html>

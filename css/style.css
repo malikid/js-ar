@@ -2,11 +2,13 @@
   margin: 0;
   padding: 0;
   color: #ffffff;
+  font-size: 24px;
 }
 
 body {
   width: 90%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 #container {
@@ -34,9 +36,11 @@ body {
   -moz-border-radius: 10px;
   border-radius: 10px;
 }
+
 .simform ol:before {
   height: 0;
 }
+
 .questions input {
   margin: 20px 0 20px 20px;
   width: 65%;
@@ -45,6 +49,7 @@ body {
   border-radius: 10px;
   background-color: #ffffff;
 }
+
 .next::after{
   top: 50px;
 }
@@ -81,10 +86,12 @@ body {
   position: relative;
   top: 50px
 }
+
 .title {
   position: absolute;
   top: -40px;
 }
+
 .title div {
   width: 30px;
   height: 30px;
@@ -98,6 +105,7 @@ body {
   -moz-border-radius: 40px;
   border-radius: 40px;
 }
+
 .dog {
   position: absolute;
   top: -50px;
@@ -105,6 +113,7 @@ body {
   width: 130px;
   z-index: 999;
 }
+
 .dog img {
   width: 100%;
 }
@@ -114,8 +123,194 @@ body {
     top: 55%;
     right: 10px;
     overflow: hidden;
-    /*margin: 0.4em 0;*/
+    margin: 1.3em 0;
     /*width: 45px;*/
     font-weight: 700;
     font-size: 0.5em;
+}
+
+/* tip */
+.clearfix {
+  zoom: 1;
+}
+
+.clearfix:before {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@-webkit-keyframes tip-show-up {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 7%;
+  }
+}
+
+@-moz-keyframes tip-show-up {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 7%;
+  }
+}
+
+@-ms-keyframes tip-show-up {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 7%;
+  }
+}
+
+@-o-keyframes tip-show-up {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 7%;
+  }
+}
+
+@keyframes tip-show-up {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 7%;
+  }
+}
+
+@-webkit-keyframes tip-show-dw {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@-moz-keyframes tip-show-dw {
+  from {
+    top: 0;
+  }
+  to {
+    top:100%;
+  }
+}
+
+@-ms-keyframes tip-show-dw {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@-o-keyframes tip-show-dw {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@keyframes tip-show-dw {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+.tip-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 100%;
+  left: 0;
+  z-index: 999;
+  background-color: transparent;
+}
+
+.tip-show:before {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -7%;
+  background-color: rgba(0,0,0,0.8);
+  content: '';
+  z-index: -1;
+}
+
+.tip-cover {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  overflow-y: hidden;
+  position: static;
+  top: 0;
+}
+
+.tip-content, .map-wrap{
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  overflow-y: auto;
+}
+
+.map-wrap {
+  visibility: hidden;
+}
+
+.tip-wrap.tip-show {
+  -webkit-animation: tip-show-up 0.3s ease 1;
+  -moz-animation: tip-show-up 0.3s ease 1;
+  -ms-animation: tip-show-up 0.3s ease 1;
+  -o-animation: tip-show-up 0.3s ease 1;
+  animation: tip-show-up 0.3s ease 1;
+  top: 7%;
+}
+
+.tip-wrap.tip-hide {
+  -webkit-animation: tip-show-dw 0.3s ease 1;
+  -moz-animation: tip-show-dw 0.3s ease 1;
+  -ms-animation: tip-show-dw 0.3s ease 1;
+  -o-animation: tip-show-dw 0.3s ease 1;
+  animation: tip-show-dw 0.3s ease 1;
+  top: 100%;
+}
+
+.tip-icon {
+  background: url('../images/tip.png') no-repeat;
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  top: -51px;
+  right: 0;
+  -webkit-background-size: 64px 64px;
+  background-size: 64px 64px;
+}
+
+#map {
+  height: 100%;
+  color: #000 !important;
+}
+
+#tip-css {
+  background-color: purple;
 }

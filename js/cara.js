@@ -30,3 +30,43 @@ function getHatStepData() {
 }
 
 
+$(function() {
+
+  var windowH = $(window).height();
+  var $tipWrap = $('.tip-wrap');
+  var $btnTipIcon = $('.btn.tip-icon');
+  var isTipShow = false;
+  $('.map-wrap').css('visible', 'hidden');
+
+  var initTip = function() {
+
+    $tipWrap.css('height', windowH);
+    $('body').css('height', windowH);
+  };
+
+  var addevenTip = function() {
+
+    $btnTipIcon.on('click', function() {
+
+      if(!isTipShow) {
+
+        isTipShow = true;
+
+        $tipWrap.removeClass('tip-hide').addClass('tip-show');
+        $('.map-wrap').css('visibility', 'visible');
+      } else {
+        isTipShow = false;
+
+        $tipWrap.removeClass('tip-show').addClass('tip-hide');
+      }
+    });
+  };
+
+  initTip();
+  addevenTip();
+});
+
+
+
+
+
