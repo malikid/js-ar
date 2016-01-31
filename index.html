@@ -1,122 +1,126 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>AWE Marker AR demo</title>
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-<meta charset="utf-8"/>
-<style type="text/css">
-* {
-	margin: 0;
-	padding: 0;
-}
-#container {
-	position: absolute;
-	left: 0;
-	/*top: 0;*/
-	bottom: 0;
-	right: 0;
-  height: 50%;
-  width: 100%;
-	overflow: hidden;
-}
-#container video {
-  left: 0;
-  margin-left: 0;
-  height: 100%;
-  width: 100%;
-}
-</style>
-</head>
-<body>
-<div id="container"></div>
-<script type="text/javascript" src="lib/awe-loader-min.js"></script>
-<script type="text/javascript">
-  window.addEventListener('load', function() {
-    window.awe.init({
-      device_type: awe.AUTO_DETECT_DEVICE_TYPE,
-      settings: {
-      	container_id: 'container',
-        default_camera_position: { x:0, y:0, z:0 },
-        default_lights:[
-          {
-            id: 'point_light',
-            type: 'point',
-            color: 0xFFFFFF,
-          },
-        ],
-      },
-      ready: function() {
-        awe.util.require([
-          {
-            capabilities: ['gum','webgl'],
-            files: [ 
-              [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js'],
-              'js/awe-jsartoolkit-dependencies.js',
-              'js/awe.marker_ar.js',
-            ],
-            success: function() {
-							awe.setup_scene();
-			        awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:10000 }, visible: false });
-              console.log("!!! awe.projections.add");
-			        awe.projections.add({
-			          id:'projection_1',
-                geometry: {path: "model/wolf.obj", x:120, y:120, z:120},
-                scale: {x:100, y:100, z:100},
-			          material:{ type: 'phong', color: 0xFFFFFF }, 
-                texture: { path: 'awe_by_buildAR.png' },
-			        }, { poi_id: 'poi_1' });
-			        awe.events.add([{
-								id: 'ar_tracking_marker',
-								device_types: {
-									pc: 1,
-									android: 1
-								},
-								register: function(handler) {
-									window.addEventListener('ar_tracking_marker', handler, false);
-								},
-								unregister: function(handler) {
-									window.removeEventListener('ar_tracking_marker', handler, false);
-								},
-								handler: function(event) {
-									if (event.detail) {
-										if (event.detail['64']) { // we are mapping marker #64 to this projection
-											awe.pois.update({
-												data: {
-													visible: true,
-                          position: { x:0, y:0, z:0 },
-													matrix: event.detail['64'].transform
-												},
-												where: {
-													id: 'poi_1'
-												}
-											});
-										}
-										else {
-											awe.pois.update({
-												data: {
-													visible: false
-												},
-												where: {
-													id: 'poi_1'
-												}
-											});
-										}
-										awe.scene_needs_rendering = 1;
-									}
-								}
-							}])
-			      },
-          },
-          {
-            capabilities: [],
-            success: function() { 
-		          document.body.innerHTML = '<p>Try this demo in the latest version of Chrome or Firefox on a PC or Android device</p>';
-            },
-          },
-        ]);
-      }
-    });
-  });
-</script>
-</body>
+  <head>
+    <title>For Cara</title>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/jquery-2.2.0.min.js"></script>
+    <script src="js/cara.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/javascript" src="lib/awe-loader-min.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <section>
+      <form id="theForm" class="simform" autocomplete="off">
+        <div class="title">
+          <div>啦</div>
+          <div>速</div>
+          <div>燙</div>
+          <div>的</div>
+          <div>一</div>
+          <div>天</div>
+        </div>
+        <div class="dog">
+          <img id="dog" src="images/main01.png" alt="">
+        </div>
+        <div class="simform-inner">
+          <ol class="questions">
+            <li>
+              <span class="q1-qbg">
+                <label for="q1">
+                  <p>早餐吃什麼好呢</p>
+                  Q.好吃的秘密是什麼？
+                </label>
+              </span>
+              <input id="q1" name="q1" type="text"/>
+            </li>
+            <li>
+              <span class="q2-qbg">
+                <label for="q2">
+                  <p>覺得痠痠der</p>
+                  Q.要去哪裡好呢？
+                </label>
+              </span>
+              <input id="q2" name="q2" type="text"/>
+            </li>
+            <li>
+              <span class="q3-qbg">
+                <label for="q3">
+                  <p>百貨公司：給 CSS (提示：文字敘述) 到某個點找帽子， (FB 打卡，我們啟動到下一關)</p>
+                  Q.咦是什麼？拍照 po Facebook
+                </label>
+              </span>
+              <input id="q3" name="q3" type="text"/>
+            </li>
+            <li>
+              <span class="q4-qbg">
+                <label for="q4">
+                  <p>恩～ 嘴巴癢癢的好想應該來吃點什麼</p>
+                  Q.哎呀！這是什麼不尋常的行為啊？
+                </label>
+              </span>
+              <input id="q4" name="q4" type="text"/>
+            </li>
+            <li>
+              <span class="q5-qbg">
+                <label for="q5">
+                  <p>好想睡覺覺喔......</p>
+                  Q5.讓小啦速燙睡在「船」上，用螢幕截圖，po Facebook
+                </label>
+              </span>
+              <input id="q5" name="q5" type="text"/>
+            </li>
+            <li>
+              <span class="q6-qbg">
+                <label for="q6">
+                  <p>終於～～嘻嘻</p>
+                  Q.知道我們在哪裡嗎？
+                </label>
+              </span>
+              <input id="q6" name="q6" type="text"/>
+            </li>
+          </ol><!-- /questions -->
+          <button class="submit" type="submit">Send answers</button>
+          <div class="controls">
+            <button class="next"></button>
+            <div class="progress"></div>
+            <span class="number">
+              <span class="number-current"></span>
+              <span class="number-total"></span>
+            </span>
+            <span class="error-message"></span>
+          </div><!-- / controls -->
+        </div><!-- /simform-inner -->
+        <span class="final-message"></span>
+      </form><!-- /simform -->
+    </section>
+    <script src="js/stepsForm.js"></script>
+    <script>
+
+      var theForm = document.getElementById( 'theForm' );
+
+      new stepsForm( theForm, {
+        onSubmit : function( form ) {
+          // hide form
+          classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+          /*
+          form.submit()
+          or
+          AJAX request (maybe show loading indicator while we don't have an answer..)
+          */
+
+          // let's just simulate something...
+          var messageEl = theForm.querySelector( '.final-message' );
+          messageEl.innerHTML = '恭喜！快ssss點來找我們吧！';
+          classie.addClass( messageEl, 'show' );
+        }
+      } );
+    </script>
+  </body>
 </html>
