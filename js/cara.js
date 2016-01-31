@@ -19,6 +19,10 @@ function getHatStepData() {
   return queryParseAPI("Checkin", {stepEvent: "hat"});
 }
 
+function getBedStepData() {
+  return queryParseAPI("Checkin", {stepEvent: "sleepAtBed"});
+}
+
 function toggleTip() {
 
   if(!isTipShow) {
