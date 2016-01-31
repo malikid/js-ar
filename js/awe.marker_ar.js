@@ -29,7 +29,7 @@
       awe.pov().aspect = aspect_ratio;
     }
     else {  
-      var innerHeight = window.innerHeight / 2;
+      var innerHeight = window.innerHeight;
       var innerWidth = window.innerWidth;
       var aspect_ratio = innerWidth / innerHeight,
         h, w;
