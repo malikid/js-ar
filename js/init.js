@@ -27,12 +27,12 @@ window.addEventListener('load', function() {
             console.log("!!! awe.projections.add");
             awe.projections.add({
               id:'projection_1',
-              geometry: {path: "../model/corgi.obj", x:0, y:0, z:0},
+              geometry: {path: "model/corgi.obj", x:0, y:0, z:0},
               position: { x:0, y:0, z:20 },
               scale: {x:20, y:20, z:20},
               rotation: {x:15, y:0, z:-30},
               material:{ type: 'phong', color: 0xFFFFFF }, 
-              texture: { path: '../model/corgi_skin.jpg' },
+              texture: { path: 'model/corgi_skin.jpg' },
             }, { poi_id: 'poi_1' });
             awe.events.add([{
               id: 'ar_tracking_marker',
