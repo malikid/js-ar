@@ -8,6 +8,7 @@
   
   function resize_video() { // jsartoolkit specific resize function
     if (awe.device_type() == 'android' && navigator.userAgent.match(/firefox/i)) {
+      console.log("!!! android firefox");
       // NOTE: This is borken - not quite sure what firefox is doing here 8/
       var aspect_ratio = window.innerWidth / window.innerHeight,
         h, w;
@@ -29,25 +30,26 @@
       awe.pov().aspect = aspect_ratio;
     }
     else {  
-      var aspect_ratio = width / height,
+      console.log("!!! else");
+      var aspect_ratio = 384 / 284,
         h, w;
-      if (window.innerHeight > window.innerWidth) {
-        h = window.innerHeight;
+      if (284 > 384) {
+        h = 284;
         w = h * aspect_ratio;
       }
       else {
-        w = window.innerWidth;
+        w = 384;
         h = w / aspect_ratio;
       }
-      if (background_video) {
-        background_video.setAttribute('height', h);
-        background_video.setAttribute('width', w);
-        background_video.style.marginLeft = -w/2 + 'px';
-        background_video.style.left = '50%';
-      }
+      // if (background_video) {
+      //   background_video.setAttribute('height', h);
+      //   background_video.setAttribute('width', w);
+      //   background_video.style.marginLeft = -w/2 + 'px';
+      //   background_video.style.left = '50%';
+      // }
       awe.renderer().setSize(w, h);
-      awe.renderer().domElement.style.left = '50%';
-      awe.renderer().domElement.style.marginLeft = -w/2 + 'px';
+      // awe.renderer().domElement.style.left = '50%';
+      // awe.renderer().domElement.style.marginLeft = -w/2 + 'px';
       awe.pov().aspect = aspect_ratio;
     }
     awe.pov().updateProjectionMatrix();
