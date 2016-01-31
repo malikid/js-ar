@@ -123,7 +123,7 @@
         video.height = height;
         background_video = document.createElement('video');
         background_video.setAttribute('width', window.innerWidth);
-        background_video.setAttribute('height', window.innerHeight);
+        background_video.setAttribute('height', window.innerHeight/2);
         background_video.setAttribute('autoplay', 'true');
         background_video.style.position = 'absolute';
         background_video.style.left = '0px';
