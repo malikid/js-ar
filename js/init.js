@@ -17,14 +17,15 @@ window.addEventListener('load', function() {
         {
           capabilities: ['gum','webgl'],
           files: [ 
-            [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js'],
+            [ 'lib/awe-standard-dependencies.js', 'lib/awe-standard.js',],
+            'lib/awe-standard-object_clicked.js',
             'js/awe-jsartoolkit-dependencies.js',
             'js/awe.marker_ar.js',
+            // 'lib/awe-standard-window_resized.js',
           ],
           success: function() {
             awe.setup_scene();
             awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:0 }, visible: false });
-            console.log("!!! awe.projections.add");
             awe.projections.add({
               id:'projection_1',
               geometry: {path: "model/corgi.obj", x:0, y:0, z:0},
@@ -73,7 +74,26 @@ window.addEventListener('load', function() {
                   awe.scene_needs_rendering = 1;
                 }
               }
-            }])
+            }, {
+              id: 'object_clicked',
+              device_types: {
+                pc: 1,
+                android: 1
+              },
+              register: function(handler) {
+                window.addEventListener('object_clicked', handler, false);
+              },
+              unregister: function(handler) {
+                window.removeEventListener('object_clicked', handler, false);
+              },
+              handler: function(event) {
+                if (event.detail) {
+                  if (event.detail["projection_id"] === "projection_1") { // we are mapping marker #64 to this projection
+                    toggleTip();
+                  }
+                }
+              }
+            }]);
           },
         },
         {
