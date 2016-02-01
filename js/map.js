@@ -1,5 +1,5 @@
 function initMap() {
-
+    console.log("!!! initMap START");
     var where = new google.maps.LatLng(25.049218, 121.5623326); //要cara去的地方
 
     var map = new google.maps.Map(document.getElementById('map'), {
@@ -75,5 +75,7 @@ function initMap() {
     marker.addListener('click', function() {
         coordInfoWindow.open(map, marker);
     });
+
+    console.log("!!! initMap END");
 
 }
