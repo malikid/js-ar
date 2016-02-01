@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+  console.log("!!! window load");
   window.awe.init({
     device_type: awe.AUTO_DETECT_DEVICE_TYPE,
     settings: {
@@ -85,4 +86,5 @@ window.addEventListener('load', function() {
       ]);
     }
   });
+  initMap();
 });
