@@ -1,6 +1,6 @@
 function initMap() {
 
-    var where = new google.maps.LatLng(25.049218, 121.5623326); //要cara去的地方
+    var where = new google.maps.LatLng(25.041240, 121.568342); //要cara去的地方
 
     var map = new google.maps.Map(document.getElementById('map'), {
         center: where,
@@ -60,7 +60,7 @@ function initMap() {
         var request = {
             destination: cara,
             origin: where,
-            travelMode: google.maps.TravelMode.DRIVING
+            travelMode: google.maps.TravelMode.WALKING
         };
         // Pass the directions request to the directions service.
         var directionsService = new google.maps.DirectionsService();

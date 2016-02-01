@@ -36,7 +36,6 @@ $(function() {
   var $tipWrap = $('.tip-wrap');
   var $btnTipIcon = $('.btn.tip-icon');
   var isTipShow = false;
-  $('.map-wrap').css('visible', 'hidden');
 
   var initTip = function() {
 
@@ -53,7 +52,6 @@ $(function() {
         isTipShow = true;
 
         $tipWrap.removeClass('tip-hide').addClass('tip-show');
-        $('.map-wrap').css('visibility', 'visible');
       } else {
         isTipShow = false;
 

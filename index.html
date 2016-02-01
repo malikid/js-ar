@@ -51,7 +51,7 @@
             <li>
               <span class="q3-qbg">
                 <label for="q3">
-                  <p>百貨公司：給 CSS (提示：文字敘述) 到某個點找帽子， (FB 打卡，我們啟動到下一關)</p>
+                  <p>馬麻給我一個禮物~~</p>
                   Q.咦是什麼？拍照 po Facebook
                 </label>
               </span>
@@ -106,15 +106,34 @@
 
       </div>
       <div class="tip-content">
-        <div class="map-wrap">
+        <div class="tips active" id="tip1">
+          <div class="eat">不吃早倉會變笨<br>聰明的一天從早倉開始<br> 卡緊呷！卡緊呷！</div>
+        </div>
+        <div class="tips" id="tip2">
           <div id="map"></div>
         </div>
-        <div class="css-wrap">
-          <div class="css">
+        <div class="tips" id="tip3">
+          <div class="html"></div>
+          <div class="css"></div>
+        </div>
+        <div class="tips" id="tip4">
+          <div class="position">
+            <span>(25.041240,121.568290)</span>
+            <div class="pos-icon"></div>
           </div>
+        </div>
+        <div class="tips" id="tip5">
+          <div class="sleep"></div>
+        </div>
+        <div class="tips" id="tip6">
+          <div class="logo"></div>
         </div>
       </div>
     </div>
+    <script type="text/javascript" src="js/map.js"></script>
+    <script async defer
+         src="https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap">
+    </script>
     <script src="js/stepsForm.js"></script>
     <script>
 
@@ -133,14 +152,10 @@
 
           // let's just simulate something...
           var messageEl = theForm.querySelector( '.final-message' );
-          messageEl.innerHTML = '恭喜！快ssss點來找我們吧！';
+          messageEl.innerHTML = '恭喜答對了！快點來找我們吧！';
           classie.addClass( messageEl, 'show' );
         }
       } );
-    </script>
-    <script type="text/javascript" src="js/map.js"></script>
-    <script async defer
-         src="https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap">
     </script>
   </body>
 </html>

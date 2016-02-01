@@ -108,14 +108,14 @@ body {
 
 .dog {
   position: absolute;
-  top: -50px;
-  right: 0;
+  top: -45px;
+  right: -30px;
   width: 130px;
   z-index: 999;
 }
 
 .dog img {
-  width: 100%;
+  width: 90%;
 }
 
 .simform .number {
@@ -150,7 +150,7 @@ body {
     top: 100%;
   }
   to {
-    top: 7%;
+    top:0;
   }
 }
 
@@ -159,7 +159,7 @@ body {
     top: 100%;
   }
   to {
-    top: 7%;
+    top:0;
   }
 }
 
@@ -168,7 +168,7 @@ body {
     top: 100%;
   }
   to {
-    top: 7%;
+    top:0;
   }
 }
 
@@ -177,7 +177,7 @@ body {
     top: 100%;
   }
   to {
-    top: 7%;
+    top:0;
   }
 }
 
@@ -186,7 +186,7 @@ body {
     top: 100%;
   }
   to {
-    top: 7%;
+    top:0;
   }
 }
 
@@ -245,15 +245,15 @@ body {
   background-color: transparent;
 }
 
-.tip-show:before {
+/*.tip-show:before {
   width: 100%;
   height: 100%;
   position: absolute;
-  top: -7%;
+  top: 0;
   background-color: rgba(0,0,0,0.8);
   content: '';
   z-index: -1;
-}
+}*/
 
 .tip-cover {
   width: 100%;
@@ -264,17 +264,21 @@ body {
   top: 0;
 }
 
-.tip-content, .map-wrap{
+.tip-content, .tips{
   width: 100%;
   height: 100%;
-  background-color: #000;
   position: absolute;
   top: 0;
   overflow-y: auto;
+  visibility: hidden;
+  background: url('../images/lasutan.jpg');
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-color: #000;
 }
 
-.map-wrap {
-  visibility: hidden;
+.tips.active {
+  visibility: visible;
 }
 
 .tip-wrap.tip-show {
@@ -283,7 +287,7 @@ body {
   -ms-animation: tip-show-up 0.3s ease 1;
   -o-animation: tip-show-up 0.3s ease 1;
   animation: tip-show-up 0.3s ease 1;
-  top: 7%;
+  top:0;
 }
 
 .tip-wrap.tip-hide {
@@ -300,10 +304,11 @@ body {
   width: 64px;
   height: 64px;
   position: absolute;
-  top: -51px;
+  top: 0px;
   right: 0;
   -webkit-background-size: 64px 64px;
   background-size: 64px 64px;
+  z-index: 1;
 }
 
 #map {
@@ -313,4 +318,76 @@ body {
 
 #tip-css {
   background-color: purple;
+}
+
+.logo {
+  background: url('../images/logo.jpg');
+  width: 100%;
+  height: 100%;
+
+}
+
+.position {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-color: #000;
+  font-size: 24px;
+  text-align: center;
+  line-height: 5em;
+}
+
+.position span {
+  top: 20%;
+  position: relative;
+  display: block;
+}
+
+.pos-icon {
+  background: url('../images/N.jpg');
+  width: 212px;
+  height: 212px;
+  margin: 0 auto;
+  position: relative;
+  top: 20%;
+}
+
+.html {
+  background: url('../images/code_html.jpg');
+  width: 210px;
+  height: 110px;
+  float: left;
+  position: relative;
+  top: 3%;
+}
+
+.css {
+  background: url('../images/code_css.jpg');
+  width: 258px;
+  height: 789px;
+  float: left;
+  position: relative;
+  top: 3%;
+}
+
+.sleep {
+  background: url('../images/sleep.png');
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  position: relative;
+  top: 3%;
+}
+
+.eat {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30%;
+  line-height: 40px;
+  font-size: 24px;
+}
+
+#content {
+  color: #000;
 }
