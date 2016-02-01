@@ -8,7 +8,6 @@
   
   function resize_video() { // jsartoolkit specific resize function
     if (awe.device_type() == 'android' && navigator.userAgent.match(/firefox/i)) {
-      console.log("!!! android firefox");
       // NOTE: This is borken - not quite sure what firefox is doing here 8/
       var aspect_ratio = window.innerWidth / window.innerHeight,
         h, w;
@@ -30,15 +29,16 @@
       awe.pov().aspect = aspect_ratio;
     }
     else {  
-      console.log("!!! else");
-      var aspect_ratio = 384 / 284,
+      var innerHeight = window.innerHeight / 2;
+      var innerWidth = window.innerWidth;
+      var aspect_ratio = innerWidth / innerHeight,
         h, w;
-      if (284 > 384) {
-        h = 284;
+      if (innerHeight > innerWidth) {
+        h = innerHeight;
         w = h * aspect_ratio;
       }
       else {
-        w = 384;
+        w = innerWidth;
         h = w / aspect_ratio;
       }
       // if (background_video) {
