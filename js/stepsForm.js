@@ -58,6 +58,7 @@
     // } else {
     //   this.current = 0;
     // }
+    this.current = 0;
 
     // questions
     this.questions = [].slice.call( this.el.querySelectorAll( 'ol.questions > li' ) );
