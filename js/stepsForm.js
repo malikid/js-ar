@@ -277,7 +277,7 @@
         this._showError('waiting');
         return false;
       case 6:
-        if(input !== '金鑛咖啡') {
+        if(input !== '金鑛咖啡' && input !== '金礦咖啡') {
           this._showError('iserror');
           return false;
         }
