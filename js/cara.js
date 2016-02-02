@@ -31,6 +31,7 @@ function addMapScript() {
 function addScriptToHtml(srcPath) {
   var scriptElement = document.createElement("script");
   scriptElement.src = srcPath;
+  scriptElement.async = true;
   var firstScript = document.getElementsByTagName("script")[0];
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 }
