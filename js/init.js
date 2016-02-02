@@ -33,7 +33,7 @@ window.addEventListener('load', function() {
               geometry: {path: "model/corgi.obj", x:0, y:0, z:0},
               position: { x:0, y:-10, z:0 },
               scale: {x:10, y:10, z:10},
-              rotation: {x:0, y:0, z:0},
+              rotation: {x:30, y:0, z:0},
               material:{ type: 'phong', color: 0xFFFFFF }, 
               texture: { path: 'model/corgi_skin.jpg' },
             }, { poi_id: 'poi_1' });
