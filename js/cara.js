@@ -95,7 +95,7 @@ function parseAPI(method, classes, data) {
 }
 
 function queryParseAPI(classes, where) {
-  parseAPI("get", classes, where);
+  return parseAPI("get", classes, where);
 }
 
 function createParseAPI(classes, data) {
