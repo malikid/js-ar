@@ -264,11 +264,22 @@
         }
       break;
       case 5:
-        if(input !== '船') {
-          this._showError('iserror');
-          return false;
-        }
-      break;
+        getBedStepData()
+        .done(function(data) {
+          if(data.results[0].hasCheckedIn) {
+            console.log("PASS!");
+            that._nextQuestion(true);
+          } else {
+            console.log("NOT PASS!");
+            that._showError( 'noCheckInYet' );
+          }
+        })
+        .fail(function(error) {
+          console.error("error");
+        })
+
+        this._showError('waiting');
+        return false;
       case 6:
         if(input !== '金鑛咖啡') {
           this._showError('iserror');
