@@ -152,6 +152,12 @@
       var nextQuestion = this.questions[ this.current ];
       classie.removeClass( currentQuestion, 'current' );
       classie.addClass( nextQuestion, 'current' );
+
+      img = this.current;
+      dog.src = 'images/main0' + img + '.png';
+      simformBg.style.backgroundColor = nextBg[img];
+      $('.tips').removeClass('active');
+      $('#tip' + img).addClass('active');
     }
 
     // after animation ends, remove class "show-next" from form element and change current question placeholder
@@ -207,6 +213,7 @@
     var that = this;
     var input = this.questions[ this.current ].querySelector('input').value;
     var currentQ = this.current + 1;
+
     switch(currentQ){
       case 1:
         if( input !== '酒' ) {
@@ -262,15 +269,6 @@
         }
       break;
     }
-
-    //
-    img = currentQ + 1;
-    dog.src = 'images/main0' + img + '.png';
-    simformBg.style.backgroundColor = nextBg[currentQ];
-    $('.tips').removeClass('active');
-    $('#tip'+img).addClass('active');
-
-    initMap();
 
     return true;
   }

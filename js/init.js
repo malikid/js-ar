@@ -1,4 +1,5 @@
 window.addEventListener('load', function() {
+
   window.awe.init({
     device_type: awe.AUTO_DETECT_DEVICE_TYPE,
     settings: {
@@ -26,6 +27,7 @@ window.addEventListener('load', function() {
           success: function() {
             awe.setup_scene();
             awe.pois.add({ id:'poi_1', position: { x:0, y:0, z:0 }, visible: false });
+
             awe.projections.add({
               id:'projection_1',
               geometry: {path: "model/corgi.obj", x:0, y:0, z:0},
@@ -35,6 +37,7 @@ window.addEventListener('load', function() {
               material:{ type: 'phong', color: 0xFFFFFF }, 
               texture: { path: 'model/corgi_skin.jpg' },
             }, { poi_id: 'poi_1' });
+
             awe.events.add([{
               id: 'ar_tracking_marker',
               device_types: {
@@ -94,6 +97,8 @@ window.addEventListener('load', function() {
                 }
               }
             }]);
+
+            addMapScript();
           },
         },
         {

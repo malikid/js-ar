@@ -2,6 +2,18 @@
 
 var isTipShow, $tipWrap, $mapWrap;
 
+function addMapScript() {
+  addScriptToHtml("js/map.js");
+  addScriptToHtml("https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
+}
+
+function addScriptToHtml(srcPath) {
+  var scriptElement = document.createElement("script");
+  scriptElement.src = srcPath;
+  var firstScript = document.getElementsByTagName("script")[0];
+  firstScript.parentNode.insertBefore(scriptElement, firstScript);
+}
+
 function queryParseAPI(classes, where) {
   return $.ajax({
     url: "https://api.parse.com/1/classes/" + classes,
@@ -64,8 +76,4 @@ $(function() {
   initTip();
   addevenTip();
 });
-
-
-
-
 
