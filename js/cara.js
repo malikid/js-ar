@@ -1,6 +1,5 @@
 "use strict";
 
-var ENVIRONMENT = "development";
 // Theme Use
 var dog, simformBg;
 var nextBg = ['#FFD96C', '#7EE88B', '#5282FF', '#E83F88', '#FFC445', '#3F51B5'];
@@ -36,6 +35,12 @@ function addScriptToHtml(srcPath) {
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 }
 
+// Get request param
+function getRequestParam(name){
+  if(name = (new RegExp('[?&]' + encodeURIComponent(name) + '=([^&]*)')).exec(location.search))
+    return decodeURIComponent(name[1]);
+}
+
 // Cookie Stuff
 function setStepCookie(currentStep, expiryHours) {
   setCookie(COOKIE_NAME, currentStep, expiryHours/24);
@@ -46,7 +51,7 @@ function getStepCookieValue() {
 }
 
 function deleteStepCookie() {
-  if(ENVIRONMENT === "development") {
+  if(getRequestParam("env")) {
     setCookie(COOKIE_NAME, 0, -1);
     location.reload();
   }
