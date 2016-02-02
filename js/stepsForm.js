@@ -231,7 +231,7 @@
         }
       break;
       case 2:
-        if( input !== '馬殺雞' ) {
+        if( input !== '太極堂' ) {
           this._showError( 'iserror' );
           return false;
         }
