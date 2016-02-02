@@ -59,6 +59,10 @@ body {
   line-height: 1.4;
 }
 
+.questions label, .questions p {
+  font-size: 14px;
+}
+
 .q1-qbg {
   background-color: #FFAA00;
 }
@@ -127,6 +131,10 @@ body {
     /*width: 45px;*/
     font-weight: 700;
     font-size: 0.5em;
+}
+
+.simform .error-message {
+  font-size: 18px;
 }
 
 /* tip */
