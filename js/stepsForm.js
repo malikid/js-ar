@@ -47,8 +47,17 @@
   };
 
   stepsForm.prototype._init = function() {
-    // current question
-    this.current = 0;
+    // Parse cookie
+    // var cookieStr = document.cookie;
+    // var lastStep = parseInt(cookieStr.substr(cookieStr.indexOf("step=") + 5, 1));
+    // console.log("lastStep", lastStep);
+    // // current question
+    // if(lastStep) {
+    //   this.current = lastStep - 1;
+    //   this._nextQuestion(true);
+    // } else {
+    //   this.current = 0;
+    // }
 
     // questions
     this.questions = [].slice.call( this.el.querySelectorAll( 'ol.questions > li' ) );
@@ -153,6 +162,9 @@
       classie.removeClass( currentQuestion, 'current' );
       classie.addClass( nextQuestion, 'current' );
 
+      // Set step cookie
+      document.cookie = "step=" + this.current + "; expires=Thu, 04 Feb 2016 00:00:00 UTC";
+      // Set image, background color, and tip
       img = this.current + 1;
       dog.src = 'images/main0' + img + '.png';
       simformBg.style.backgroundColor = nextBg[img];
