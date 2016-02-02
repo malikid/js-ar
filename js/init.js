@@ -74,7 +74,8 @@ window.addEventListener('load', function() {
                   awe.scene_needs_rendering = 1;
                 }
               }
-            }])
+            }]);
+            addMapScript();
           },
         },
         {
@@ -86,9 +87,4 @@ window.addEventListener('load', function() {
       ]);
     }
   });
-  var map = document.createElement('script');
-  // map.async = true;
-  map.src = 'https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(map, s);
 });
