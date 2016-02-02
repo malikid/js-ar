@@ -1,11 +1,15 @@
 "use strict";
 
 function addMapScript() {
-  var map = document.createElement('script');
-  // map.async = true;
-  map.src = 'https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap';
-  var s = document.getElementsByTagName('script')[0];
-  s.parentNode.insertBefore(map, s);
+  addScriptToHtml("js/map.js");
+  addScriptToHtml("https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
+}
+
+function addScriptToHtml(srcPath) {
+  var scriptElement = document.createElement("script");
+  scriptElement.src = srcPath;
+  var firstScript = document.getElementsByTagName("script")[0];
+  firstScript.parentNode.insertBefore(scriptElement, firstScript);
 }
 
 function queryParseAPI(classes, where) {
