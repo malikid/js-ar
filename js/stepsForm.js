@@ -216,8 +216,12 @@
   stepsForm.prototype._validate = function() {
     // current question´s input
     var that = this;
-    var input = this.questions[ this.current ].querySelector('input').value;
+    var currentQuestion = this.questions[ this.current ];
+    var questionStr = currentQuestion.querySelector('label').innerHTML;
+    var input = currentQuestion.querySelector('input').value;
     var currentQ = this.current + 1;
+
+    setStepAnswerData(currentQ, questionStr, input);
 
     switch(currentQ){
       case 1:

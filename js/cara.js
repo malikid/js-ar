@@ -76,17 +76,30 @@ function getCookie(cname) {
 }
 
 // API Stuff
-function queryParseAPI(classes, where) {
+function parseAPI(method, classes, data) {
+  var dataPrefix = "";
+  if(method === "get") {
+    dataPrefix = "where=";
+  }
   return $.ajax({
     url: "https://api.parse.com/1/classes/" + classes,
+    method: method,
     dataType: 'json',
     contentType: 'application/json',
     beforeSend: function(request) {
       request.setRequestHeader("X-Parse-Application-Id", '7OIk98BkPkgNcZWRIlzaRkz3VPVBjDzkYJ4UGg6p');
       request.setRequestHeader("X-Parse-REST-API-Key", 'GI4UKLbxWB6blOjORDDl9ukV6Nt53nHfCMloqgmP');
     },
-    data: "where=" + JSON.stringify(where)
+    data: dataPrefix + JSON.stringify(data)
   });
+}
+
+function queryParseAPI(classes, where) {
+  parseAPI("get", classes, where);
+}
+
+function createParseAPI(classes, data) {
+  parseAPI("post", classes, data);
 }
 
 function getHatStepData() {
@@ -97,9 +110,17 @@ function getBedStepData() {
   return queryParseAPI("Checkin", {stepEvent: "sleepAtBed"});
 }
 
+function setStepAnswerData(step, question, answer) {
+  var object = {
+    step: step,
+    question: question,
+    answer: answer
+  };
+  return createParseAPI("Answer", object);
+}
+
 // Tip Stuff
 function toggleTip() {
-
   if(!isTipShow) {
 
     isTipShow = true;
@@ -116,7 +137,6 @@ function toggleTip() {
 }
 
 $(function() {
-
   var windowH = $(window).height();
   var $btnTipIcon = $('.btn.tip-icon');
   isTipShow = false;
