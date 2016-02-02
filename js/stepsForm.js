@@ -15,7 +15,7 @@
   var dog = document.getElementById('dog');
   var img = '';
   var simformBg = document.getElementById('theForm');
-  var nextBg = ['#FFD96C','#7EE88B','#5282FF','#E83F88','#FFC445','#3F51B5'];
+  var nextBg = ['', '#FFD96C', '#7EE88B', '#5282FF', '#E83F88', '#FFC445', '#3F51B5'];
   var transEndEventNames = {
       'WebkitTransition': 'webkitTransitionEnd',
       'MozTransition': 'transitionend',
@@ -153,7 +153,7 @@
       classie.removeClass( currentQuestion, 'current' );
       classie.addClass( nextQuestion, 'current' );
 
-      img = this.current;
+      img = this.current + 1;
       dog.src = 'images/main0' + img + '.png';
       simformBg.style.backgroundColor = nextBg[img];
       $('.tips').removeClass('active');
