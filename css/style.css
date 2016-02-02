@@ -31,6 +31,7 @@ body {
 
 .simform {
   padding-top: 10%;
+  padding-bottom: 1em;
   background-color: #FFD96C;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -134,7 +135,8 @@ body {
 }
 
 .simform .error-message {
-  font-size: 18px;
+  font-size: 14px;
+  padding: 5px 20px;
 }
 
 /* tip */
