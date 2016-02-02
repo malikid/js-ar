@@ -12,10 +12,7 @@
 ;( function( window ) {
 
   'use strict';
-  var dog = document.getElementById('dog');
-  var img = '';
-  var simformBg = document.getElementById('theForm');
-  var nextBg = ['', '#FFD96C', '#7EE88B', '#5282FF', '#E83F88', '#FFC445', '#3F51B5'];
+
   var transEndEventNames = {
       'WebkitTransition': 'webkitTransitionEnd',
       'MozTransition': 'transitionend',
@@ -48,24 +45,20 @@
 
   stepsForm.prototype._init = function() {
     // Parse cookie
-    // var cookieStr = document.cookie;
-    // var lastStep = parseInt(cookieStr.substr(cookieStr.indexOf("step=") + 5, 1));
-    // console.log("lastStep", lastStep);
-    // // current question
-    // if(lastStep) {
-    //   this.current = lastStep - 1;
-    //   this._nextQuestion(true);
-    // } else {
-    //   this.current = 0;
-    // }
-    this.current = 0;
+    var lastStep = parseInt(getStepCookieValue());
+    // current question
+    if(lastStep) {
+      this.current = lastStep;
+    } else {
+      this.current = 0;
+    }
 
     // questions
     this.questions = [].slice.call( this.el.querySelectorAll( 'ol.questions > li' ) );
     // total questions
     this.questionsCount = this.questions.length;
     // show first question
-    classie.addClass( this.questions[0], 'current' );
+    classie.addClass( this.questions[this.current], 'current' );
 
     // next question control
     this.ctrlNext = this.el.querySelector( 'button.next' );
@@ -87,6 +80,9 @@
 
     // init events
     this._initEvents();
+
+    initTheme();
+    setTheme(this.current);
   };
 
   stepsForm.prototype._initEvents = function() {
@@ -164,13 +160,9 @@
       classie.addClass( nextQuestion, 'current' );
 
       // Set step cookie
-      document.cookie = "step=" + this.current + "; expires=Thu, 04 Feb 2016 00:00:00 UTC";
-      // Set image, background color, and tip
-      img = this.current + 1;
-      dog.src = 'images/main0' + img + '.png';
-      simformBg.style.backgroundColor = nextBg[img];
-      $('.tips').removeClass('active');
-      $('#tip' + img).addClass('active');
+      setStepCookie(this.current, 5);
+      // Set theme
+      setTheme(this.current);
     }
 
     // after animation ends, remove class "show-next" from form element and change current question placeholder

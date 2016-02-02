@@ -1,7 +1,29 @@
 "use strict";
 
+var ENVIRONMENT = "development";
+// Theme Use
+var dog, simformBg;
+var nextBg = ['#FFD96C', '#7EE88B', '#5282FF', '#E83F88', '#FFC445', '#3F51B5'];
+// Tip Use
 var isTipShow, $tipWrap, $mapWrap;
+// Cookie Use
+var COOKIE_NAME = "step";
 
+// Theme stuff
+function initTheme() {
+  dog = document.getElementById('dog');
+  simformBg = document.getElementById('theForm');
+}
+
+function setTheme(currentStep) {
+  dog.src = 'images/main0' + currentStep + '.png';
+  simformBg.style.backgroundColor = nextBg[currentStep];
+  var tipElements = $('.tips');
+  tipElements.removeClass('active');
+  $(tipElements[currentStep]).addClass('active');
+}
+
+// Map Stuff
 function addMapScript() {
   addScriptToHtml("js/map.js");
   addScriptToHtml("https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
@@ -14,6 +36,41 @@ function addScriptToHtml(srcPath) {
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 }
 
+// Cookie Stuff
+function setStepCookie(currentStep, expiryHours) {
+  setCookie(COOKIE_NAME, currentStep, expiryHours/24);
+}
+
+function getStepCookieValue() {
+  return getCookie(COOKIE_NAME);
+}
+
+function deleteStepCookie() {
+  if(ENVIRONMENT === "development") {
+    setCookie(COOKIE_NAME, 0, -1);
+    location.reload();
+  }
+}
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1);
+      if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return "";
+}
+
+// API Stuff
 function queryParseAPI(classes, where) {
   return $.ajax({
     url: "https://api.parse.com/1/classes/" + classes,
@@ -35,6 +92,7 @@ function getBedStepData() {
   return queryParseAPI("Checkin", {stepEvent: "sleepAtBed"});
 }
 
+// Tip Stuff
 function toggleTip() {
 
   if(!isTipShow) {
