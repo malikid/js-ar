@@ -1,6 +1,6 @@
 function initMap() {
 
-    var where = new google.maps.LatLng(25.041507, 121.568242); //要cara去的地方
+    var where = new google.maps.LatLng(25.0412157,121.5682738); //要cara去的地方
 
     var map = new google.maps.Map(document.getElementById('map'), {
         center: where,
