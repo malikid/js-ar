@@ -31,7 +31,7 @@ window.addEventListener('load', function() {
             awe.projections.add({
               id:'projection_1',
               geometry: {path: "model/corgi.obj", x:0, y:0, z:0},
-              position: { x:0, y:0, z:20 },
+              position: { x:0, y:0, z:10 },
               scale: {x:10, y:10, z:10},
               rotation: {x:0, y:0, z:0},
               material:{ type: 'phong', color: 0xFFFFFF }, 
