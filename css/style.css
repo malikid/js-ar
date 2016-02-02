@@ -60,8 +60,14 @@ body {
   line-height: 1.4;
 }
 
-.questions label, .questions p {
+.questions label {
   font-size: 14px;
+}
+
+.questions p {
+  font-style: italic;
+  font-size: 12px;
+  color: #eeeeee;
 }
 
 .q1-qbg {
@@ -104,7 +110,7 @@ body {
   text-align: center;
   background-color: #000000;
   display: inline-block;
-  margin-right: 5px;
+  margin-right: -5px;
   font-size: 14px;
   -webkit-border-radius: 40px;
   -moz-border-radius: 40px;
@@ -400,4 +406,15 @@ body {
 
 #content {
   color: #000;
+}
+
+.gift {
+  width: 80%;
+  display: block;
+  float: left;
+  height: 100px;
+  clear: both;
+  position: relative;
+  margin-top: 26px;
+  font-size: 20px;
 }
