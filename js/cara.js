@@ -24,14 +24,19 @@ function setTheme(currentStep) {
 
 // Map Stuff
 function addMapScript() {
-  addScriptToHtml("js/map.js");
-  addScriptToHtml("https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
+  addScriptToHtml("js/map.js", addScriptToHtml, "https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
+  // addScriptToHtml("https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
 }
 
-function addScriptToHtml(srcPath) {
+function addScriptToHtml(srcPath, callback, arguments) {
   var scriptElement = document.createElement("script");
   scriptElement.src = srcPath;
   scriptElement.async = true;
+  if($.isFunction(callback)) {
+    scriptElement.addEventListener("load", function(e) {
+      callback.apply(null, arguments);
+    }, false);
+  }
   var firstScript = document.getElementsByTagName("script")[0];
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 }
