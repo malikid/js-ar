@@ -28,15 +28,20 @@ function addMapScript() {
   // addScriptToHtml("https://maps.googleapis.com/maps/api/js?v=3&signed_in=true&callback=initMap");
 }
 
-function addScriptToHtml(srcPath, callback, arguments) {
+function addScriptToHtml(srcPath, callback, params) {
   var scriptElement = document.createElement("script");
   scriptElement.src = srcPath;
   scriptElement.async = true;
+
   if($.isFunction(callback)) {
+    if(!$.isArray(params)) {
+      params = [params];
+    }
     scriptElement.addEventListener("load", function(e) {
-      callback.apply(null, arguments);
+      callback.apply(null, params);
     }, false);
   }
+  
   var firstScript = document.getElementsByTagName("script")[0];
   firstScript.parentNode.insertBefore(scriptElement, firstScript);
 }
